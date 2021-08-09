@@ -1,0 +1,5 @@
+git init
+git add document.txt
+gti commit - m "git test"
+git remote add origin https://github.com/kalibea/Git-Tutorial.git
+git push -u origin master
