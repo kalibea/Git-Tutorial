@@ -3,3 +3,209 @@ git add document.txt
 gti commit - m "git test"
 git remote add origin https://github.com/kalibea/Git-Tutorial.git
 git push -u origin master
+W:\gitrepositoryfolder\Git-Tutorial>git branch develop
+
+W:\gitrepositoryfolder\Git-Tutorial>git log
+commit b2ef97882fdf9db5fbaa92a7271f26553f1e38f3 (HEAD -> master, origin/master, develop)
+Author: kalibea <kalibea@nate.com>
+Date:   Mon Aug 9 19:10:14 2021 +0900
+
+    Add my_module [Sub]
+
+commit 6e7a9e3e8bbe7bd88773c50e82df98f433b81d69
+Author: kalibea <kalibea@nate.com>
+Date:   Mon Aug 9 19:02:53 2021 +0900
+
+    Add my_module [Add]
+
+commit 919492bbf439f46bb84e4cd4601d03a6048918fc
+Author: kalibea <kalibea@nate.com>
+Date:   Mon Aug 9 18:14:06 2021 +0900
+
+    Add Text File [document.txt]
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+  develop
+* master
+
+W:\gitrepositoryfolder\Git-Tutorial>git checkout develop
+Switched to branch 'develop'
+
+W:\gitrepositoryfolder\Git-Tutorial>git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   my_module.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+W:\gitrepositoryfolder\Git-Tutorial>git add my_module.py
+
+W:\gitrepositoryfolder\Git-Tutorial>git commit -m "my_module.py comment"
+[develop c250197] my_module.py comment
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+* develop
+  master
+
+W:\gitrepositoryfolder\Git-Tutorial>git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+  develop
+* master
+
+W:\gitrepositoryfolder\Git-Tutorial>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   my_module.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+W:\gitrepositoryfolder\Git-Tutorial>git add my_module.py
+
+W:\gitrepositoryfolder\Git-Tutorial>git commit -m "my_module.py on master"
+[master bf6f532] my_module.py on master
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+  develop
+* master
+
+W:\gitrepositoryfolder\Git-Tutorial>git merge develop
+Auto-merging my_module.py
+CONFLICT (content): Merge conflict in my_module.py
+Automatic merge failed; fix conflicts and then commit the result.
+
+W:\gitrepositoryfolder\Git-Tutorial>git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   my_module.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+W:\gitrepositoryfolder\Git-Tutorial>git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   my_module.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+W:\gitrepositoryfolder\Git-Tutorial>git add my_module.py
+
+W:\gitrepositoryfolder\Git-Tutorial>git commit -m "merge master develop"
+[master 4ea39b6] merge master develop
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+  develop
+* master
+
+def add(a,b):
+ return a + b
+ 
+ def sub(a,b):
+<<<<<<< HEAD
+   return a - b #주석 comment
+=======
+   return a - b #주석
+>>>>>>> develop
+
+merge한 이후 
+branch master의 내용
+def add(a,b):
+ return a + b
+ 
+ def sub(a,b):
+   return a - b #주석 comment
+   return a - b #주석
+
+merge한 이후 
+branch develop내용
+def add(a,b):
+ return a + b
+ 
+ def sub(a,b):
+   return a - b #주석
+
+즉 checkout을 master로 하고 merge했기때문에 master브랜치에 있는 내용만 수정된것이다.
+
+
+
+W:\gitrepositoryfolder\Git-Tutorial>git checkout develop
+Switched to branch 'develop'
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch master
+fatal: A branch named 'master' already exists.
+
+W:\gitrepositoryfolder\Git-Tutorial>git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+W:\gitrepositoryfolder\Git-Tutorial>git checkout develop
+Switched to branch 'develop'
+
+W:\gitrepositoryfolder\Git-Tutorial>]git branch
+']git'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+W:\gitrepositoryfolder\Git-Tutorial>git branch
+* develop
+  master
+
+W:\gitrepositoryfolder\Git-Tutorial>git push
+fatal: The current branch develop has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin develop
+
+
+W:\gitrepositoryfolder\Git-Tutorial>git push --set-upstream origin develop
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 316 bytes | 158.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: fatal error in commit_refs
+To https://github.com/kalibea/Git-Tutorial.git
+ ! [remote rejected] develop -> develop (failure)
+error: failed to push some refs to 'https://github.com/kalibea/Git-Tutorial.git'
+
+W:\gitrepositoryfolder\Git-Tutorial>git push origin develop
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 316 bytes | 316.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: fatal error in commit_refs
+To https://github.com/kalibea/Git-Tutorial.git
+ ! [remote rejected] develop -> develop (failure)
+error: failed to push some refs to 'https://github.com/kalibea/Git-Tutorial.git'
+
