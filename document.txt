@@ -209,3 +209,7 @@ To https://github.com/kalibea/Git-Tutorial.git
  ! [remote rejected] develop -> develop (failure)
 error: failed to push some refs to 'https://github.com/kalibea/Git-Tutorial.git'
 
+git push -u origin master
+git remote -v
+git remote show origin
+
